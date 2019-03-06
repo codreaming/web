@@ -11,6 +11,7 @@
       class='query'
     />
     <button class='btn' @click="getRequest">Find teammate!</button>
+    <Auth :authOpen="authOpen" @closeModal = "authOpen = $event"/>
     <div v-if="list.length" class="result">
       <SearchListItem v-for="item in list"
         :key="item.id"
@@ -22,21 +23,24 @@
 <script>
 import BaseInputSearch from './BaseInputSearch.vue'
 import SearchListItem from './SearchListItem.vue'
+import Auth from './Auth'
 
 export default {
   components: {
-    BaseInputSearch, SearchListItem
+    BaseInputSearch, SearchListItem, Auth
   },
   data () {
     return {
       userName: '',
       searchText: '',
       list: [
-      ]
+      ],
+      authOpen: false
     }
   },
   methods: {
     getRequest () {
+      this.authOpen = true
       const userName = this.userName.trim()
       const searchText = this.searchText.trim()
       let options = {

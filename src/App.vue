@@ -1,8 +1,20 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Home/>
+    <!-- <router-view/> -->
+
   </div>
 </template>
+
+<script>
+import Home from '@/views/Home.vue'
+
+export default {
+  components: {
+    Home
+  }
+}
+</script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
